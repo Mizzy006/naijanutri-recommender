@@ -21,3 +21,12 @@ COPY . .
 # Expose the ports for both FastAPI and Streamlit
 EXPOSE 8000
 EXPOSE 8501
+
+# Copy the startup script
+COPY start.sh .
+
+# Make the script executable
+RUN chmod +x start.sh
+
+
+CMD ["./start.sh"]
