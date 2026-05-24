@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  backend:
+    # We use the root Dockerfile we created earlier so it can access the whole project
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: naija_nutri_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount your pristine data and the database we just painstakingly rebuilt!
+      - ./data:/app/data
+      - ./chroma_data:/app/chroma_data
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - PYTHONUNBUFFERED=1
+      # The Hugging Face patch to prevent Windows/Docker deadlocks
+      - TOKENIZERS_PARALLELISM=false 
+    # Notice we removed --reload to prevent the Uvicorn freeze
+    command: uvicorn backend.main:app --host 0.0.0.0 --port 8000
+
+  frontend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: naija_nutri_frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      - backend
+    command: streamlit run frontend/app.py --server.port 8501 --server.address 0.0.0.0

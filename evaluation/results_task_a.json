@@ -1,0 +1,25 @@
+{
+  "n_evaluated": 28,
+  "n_errors": 22,
+  "elapsed_seconds": 1681.1,
+  "rating_metrics": {
+    "rmse": 0.5654,
+    "mae": 0.4821
+  },
+  "rouge_metrics": {
+    "rouge1_f1": 0.1014,
+    "rouge2_f1": 0.021,
+    "rougeL_f1": 0.0739
+  },
+  "bertscore_metrics": {
+    "bertscore_precision": 0.8592,
+    "bertscore_recall": 0.8114,
+    "bertscore_f1": 0.8345
+  },
+  "archetype_rmse": {
+    "Sapa Student": 0.5757,
+    "Working Class": 0.4168,
+    "Naija Mama": 0.6292,
+    "Omo Landlord": 0.7
+  }
+}

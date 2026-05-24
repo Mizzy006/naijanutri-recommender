@@ -1,0 +1,12 @@
+{
+  "n_evaluated": 50,
+  "n_errors": 0,
+  "ndcg@10": 0.0726,
+  "hit@10": 0.08,
+  "mrr": 0.0712,
+  "cold_start_ndcg": 0.0625,
+  "n_cold_start": 16,
+  "domain_ndcg": {
+    "yelp": 0.0726
+  }
+}
